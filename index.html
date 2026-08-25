@@ -118,9 +118,9 @@
 
 <div class="container">
   <h2>Gerador Lotofácil Estratégico</h2>
-  <p>Insira abaixo os <strong>10 últimos concursos</strong> (15 números por linha, separados por espaço ou vírgula):</p>
+  <p>Insira abaixo os <strong>15 últimos concursos</strong> (15 números por linha, separados por espaço ou vírgula):</p>
   
-  <textarea id="historico" placeholder="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15&#10;... (cole 10 jogos aqui)"></textarea>
+  <textarea id="historico" placeholder="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15&#10;... (cole 15 jogos aqui)"></textarea>
 
   <button onclick="gerarJogoEstrategico()">Gerar Jogo</button>
 
@@ -153,12 +153,12 @@
     // Processa o texto em linhas e números
     const linhas = texto.split('\n').filter(l => l.trim() !== '');
     
-    if (linhas.length < 10) {
-      erroDiv.innerText = `Por favor, insira exatamente 10 concursos (você inseriu ${linhas.length}).`;
+    if (linhas.length < 15) {
+      erroDiv.innerText = `Por favor, insira exatamente 15 concursos (você inseriu ${linhas.length}).`;
       return;
     }
 
-    const jogos = linhas.slice(0, 10).map(linha => {
+    const jogos = linhas.slice(0, 15).map(linha => {
       const nums = linha.match(/\d+/g);
       return nums ? nums.map(Number) : [];
     });
@@ -192,8 +192,8 @@
     while (maxTentativas > 0 && !apostaFinal) {
       maxTentativas--;
 
-      // Sorteia metas das restrições (7 a 11 números do último concurso)
-      metaRepetidosUltimo = Math.floor(Math.random() * 5) + 7; // 7, 8, 9, 10 ou 11
+      // Sorteia metas das restrições (7 a 10 números do último concurso)
+      metaRepetidosUltimo = Math.floor(Math.random() * 4) + 7; // 7, 8, 9, 10
       metaMaisFrequentes = Math.max(0, 9 - metaRepetidosUltimo);
 
       // Separação de Números
